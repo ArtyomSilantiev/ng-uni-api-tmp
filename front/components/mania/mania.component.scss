@@ -1,0 +1,8 @@
+.mania-state {
+    text-align: center;
+    margin: 0 auto;
+
+    div ~ div {
+        margin-top: 10px;
+    }
+}
