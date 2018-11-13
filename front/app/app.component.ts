@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
         this.userService.init();
 
-        const responce = await this.api.get('http://localhost:3000/api/user/auth');
+        const responce = await this.api.get('http://localhost:3000/api/user/info');
 
         if (responce.code === 200) {
             this.userService.setToken(responce.data.token);

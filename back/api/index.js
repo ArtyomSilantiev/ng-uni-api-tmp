@@ -22,7 +22,7 @@ router.use(async (req, res, next) => {
     }
 });
 
-router.get('/user/auth', (req, res, next) => {
+router.get('/user/info', (req, res, next) => {
     if (!req.token) {
         req.token = Date.now().toString(36) + '-' + _.random(Math.pow(36, 2), Math.pow(36, 3)).toString(36);
     }
