@@ -24,13 +24,13 @@ router.use(async (req, res, next) => {
 
 router.get('/user/auth', (req, res, next) => {
     if (!req.token) {
-        req.toket = Date.now().toString(36) + '-' + _.random(Math.pow(36, 2), Math.pow(36, 3)).toString(36);
+        req.token = Date.now().toString(36) + '-' + _.random(Math.pow(36, 2), Math.pow(36, 3)).toString(36);
     }
 
     res.json({
         code: 200,
         data: {
-            toket: req.toket
+            token: req.token
         }
     })
 });

@@ -1,5 +1,6 @@
 import { Injectable, Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { ApiService } from '../services/api.service';
 
 @Injectable()
 @Component({
@@ -10,10 +11,20 @@ import { UserService } from '../services/user.service';
 export class AppComponent implements OnInit {
     title = 'ng-cli-universal';
 
-    constructor(private userService: UserService) {}
+    constructor(
+        private userService: UserService,
+        private api: ApiService
+    ) {}
 
-    ngOnInit(): void {
+    async ngOnInit() {
         console.log('app init');
+
         this.userService.init();
+
+        const responce = await this.api.get('http://localhost:3000/api/user/auth');
+
+        if (responce.code === 200) {
+            this.userService.setToken(responce.data.token);
+        }
     }
 }
