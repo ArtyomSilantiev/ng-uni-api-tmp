@@ -10,17 +10,17 @@ import {
 })
 
 export class ManiaComponent implements OnInit {
-  private bablo: number;
+  private res: number;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.bablo = Number(localStorage.getItem('mania.bablo')) || 0;
+    this.res = Number(localStorage.getItem('mania.res')) || 0;
   }
 
-  private moreBablo(): void {
-    this.bablo += 10;
-    localStorage.setItem('mania.bablo', String(this.bablo));
+  private moreRes(): void {
+    this.res += 10;
+    localStorage.setItem('mania.res', String(this.res));
   }
 }
