@@ -6,9 +6,39 @@ import {
 } from '@angular/common/http';
 import { UserService } from './user.service';
 
-@Injectable()
-export class ApiService {
-    constructor(private http: HttpClient, private userService: UserService) {}
+export class ApiInstance {
+    public url: string;
+    private api: ApiRequester;
+
+    constructor (api: ApiRequester) {
+        this.api = api;
+    }
+
+    public get(url, data?: object): Promise<any> {
+        return this.api.get(this.url + url, data);
+    }
+
+    public post(url, data?: object): Promise<any> {
+        return this.api.post(this.url + url, data);
+    }
+
+    public put(url, data?: object): Promise<any> {
+        return this.api.put(this.url + url, data);
+    }
+
+    public delete(url, data?: object): Promise<any> {
+        return this.api.delete(this.url + url, data);
+    }
+}
+
+export class ApiRequester {
+    private http: HttpClient;
+    private userService: UserService;
+
+    constructor(http: HttpClient, userService: UserService) {
+        this.http = http;
+        this.userService = userService;
+    }
 
     private request(
         method,
@@ -50,19 +80,61 @@ export class ApiService {
         });
     }
 
-    public get(url, data?: object) {
+    public get(url, data?: object): Promise<any> {
         return this.request('GET', url, data);
     }
 
-    public post(url, data?: object) {
+    public post(url, data?: object): Promise<any> {
         return this.request('POST', url, data);
     }
 
-    public put(url, data?: object) {
+    public put(url, data?: object): Promise<any> {
         return this.request('PUT', url, data);
     }
 
-    public delete(url, data?: object) {
+    public delete(url, data?: object): Promise<any> {
         return this.request('DELETE', url, data);
+    }
+}
+
+@Injectable()
+export class ApiService {
+    private apiInstances = {};
+    private defaultApiInstance: ApiInstance;
+    private apiRequester: ApiRequester;
+
+    constructor(private http: HttpClient, private userService: UserService) {
+        this.apiRequester = new ApiRequester(http, userService);
+        this.defaultApiInstance = new ApiInstance(this.apiRequester);
+    }
+
+    public get(url, data?: object): Promise<any> {
+        return this.defaultApiInstance.get(url, data);
+    }
+
+    public post(url, data?: object): Promise<any> {
+        return this.defaultApiInstance.post(url, data);
+    }
+
+    public put(url, data?: object): Promise<any> {
+        return this.defaultApiInstance.put(url, data);
+    }
+
+    public delete(url, data?: object): Promise<any> {
+        return this.defaultApiInstance.delete(url, data);
+    }
+
+    public setDefaultApiInstanceUrl(url: string): void {
+        this.defaultApiInstance.url = url;
+    }
+
+    public createApiInstance(name: string, url: string): ApiInstance {
+        this.apiInstances[name] = new ApiInstance(this.apiRequester);
+        this.apiInstances[name].url = url;
+        return this.apiInstances[name];
+    }
+
+    public getApiInstance(name: string): ApiInstance {
+        return this.apiInstances[name];
     }
 }

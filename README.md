@@ -1,6 +1,7 @@
 # Dependencies
 
 1. Angular-cli (npm i @angular/cli -g)
+2. docker-compose
 
 # First project up
 
@@ -12,6 +13,7 @@ docker-compose up
 ng serve
 # another tab
 node server
+http://localhost:4200/
 ```
 
 # Project up
@@ -23,4 +25,5 @@ docker-compose up
 ng serve
 # another tab
 node server
+http://localhost:4200/
 ```
