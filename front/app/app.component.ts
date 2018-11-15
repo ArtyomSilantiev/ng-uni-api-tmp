@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
         this.userService.init();
 
-        this.api.setDefaultApiInstanceUrl('http://localhost:3000/api');
+        this.api.setDefaultApiInstanceUrl('/api');
 
         const responce = await this.api.get('/user/info');
 

@@ -10,7 +10,7 @@ cd <project folder>
 npm i
 docker-compose up
 # another tab
-ng serve
+npm run serve
 # another tab
 node server
 http://localhost:4200/
@@ -22,7 +22,7 @@ http://localhost:4200/
 cd <project folder>
 docker-compose up
 # another tab
-ng serve
+npm run serve
 # another tab
 node server
 http://localhost:4200/
