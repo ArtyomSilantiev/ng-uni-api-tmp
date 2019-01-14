@@ -15,8 +15,6 @@ export class AppComponent implements OnInit {
         private userService: UserService,
         private api: ApiService
     ) {
-        console.log('app init');
-        api.setDefaultApiInstanceUrl('/api');
         userService.init(api);
     }
 

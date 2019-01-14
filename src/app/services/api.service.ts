@@ -106,6 +106,7 @@ export class ApiService {
     constructor(private http: HttpClient, private userService: UserService) {
         this.apiRequester = new ApiRequester(http, userService);
         this.defaultApiInstance = new ApiInstance(this.apiRequester);
+        this.setDefaultApiInstanceUrl('/api');
     }
 
     public get(url, data?: object): Promise<any> {
