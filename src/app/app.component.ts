@@ -1,6 +1,6 @@
 import { Injectable, Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
-import { ApiService } from '../services/api.service';
+import { UserService } from './services/user.service';
+import { ApiService } from './services/api.service';
 
 @Injectable()
 @Component({

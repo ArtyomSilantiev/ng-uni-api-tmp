@@ -7,9 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
-import { UserService } from '../services/user.service';
-import { LocalStorageService } from '../services/local-storage.service';
-import { ApiService } from 'front/services/api.service';
+import { UserService } from './services/user.service';
+import { LocalStorageService } from './services/local-storage.service';
+import { ApiService } from './services/api.service';
 
 @NgModule({
     declarations: [AppComponent],

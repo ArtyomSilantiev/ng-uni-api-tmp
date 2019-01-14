@@ -5,7 +5,7 @@
   "projects": {
     "ng-cli-universal": {
       "root": "",
-      "sourceRoot": "front",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
@@ -18,17 +18,17 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/ng-cli-universal",
-            "index": "front/index.html",
-            "main": "front/main.ts",
-            "polyfills": "front/polyfills.ts",
-            "tsConfig": "front/tsconfig.app.json",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "front/favicon.ico",
-              "front/assets"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "front/styles.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -36,8 +36,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "front/environments/environment.ts",
-                  "with": "front/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -79,17 +79,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "front/test.ts",
-            "polyfills": "front/polyfills.ts",
-            "tsConfig": "front/tsconfig.spec.json",
-            "karmaConfig": "front/karma.conf.js",
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "front/styles.scss"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
-              "front/favicon.ico",
-              "front/assets"
+              "src/favicon.ico",
+              "src/assets"
             ]
           }
         },
@@ -97,8 +97,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "front/tsconfig.app.json",
-              "front/tsconfig.spec.json"
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
