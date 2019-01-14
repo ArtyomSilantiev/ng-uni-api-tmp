@@ -14,19 +14,12 @@ export class AppComponent implements OnInit {
     constructor(
         private userService: UserService,
         private api: ApiService
-    ) {}
+    ) {
+        console.log('app init');
+        api.setDefaultApiInstanceUrl('/api');
+        userService.init(api);
+    }
 
     async ngOnInit() {
-        console.log('app init');
-
-        this.userService.init();
-
-        this.api.setDefaultApiInstanceUrl('/api');
-
-        const responce = await this.api.get('/user/info');
-
-        if (responce.code === 200) {
-            this.userService.setToken(responce.data.token);
-        }
     }
 }
